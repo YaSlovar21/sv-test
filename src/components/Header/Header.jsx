@@ -1,0 +1,26 @@
+import { NavLink } from "react-router-dom";
+import { ROUTES } from "../../utils/constants";
+
+import { useDispatch, useSelector } from "react-redux";
+import { AccountCircle, PhotoCamera } from "@mui/icons-material";
+import { Button } from "@mui/joy";
+
+function Header() {
+    
+    const dispatch = useDispatch();
+
+    function handleRefresh() {
+
+    }
+
+    return (
+        <div className="flex flex-col-reverse bg-gray-300 fixed top-0 right-0 justify-between p-8">
+            <NavLink to={ROUTES.home}>
+                <span className="text-lg uppercase font-semibold">НОВОСТНАЯ ЛЕНТА</span>
+            </NavLink>
+            <Button onClick={handleRefresh} type="button">Обновить</Button>
+        </div>
+    );
+}
+
+export default Header;

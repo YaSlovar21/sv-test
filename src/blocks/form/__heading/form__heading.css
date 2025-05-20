@@ -1,0 +1,9 @@
+.form__heading {
+    margin: 0 0 50px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.2;
+
+    @apply text-3xl text-primary-green;
+}

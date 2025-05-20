@@ -1,0 +1,8 @@
+.form__submit {
+    border: 1px solid;
+    width: 100%;
+    padding: 12px 0;
+    margin-top: 40px;
+
+    @apply flex items-center justify-center gap-5 text-2xl font-medium  text-white rounded-2xl bg-primary-green;
+}
