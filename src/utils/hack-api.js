@@ -20,7 +20,7 @@ export const getNewsRequest = () => {
     }); 
 }
 
-export const getNewById = (id) => {
+export const getNewByIdRequest = (id) => {
     return fetch(`${BASE_URL}/${API_VERSION}/item/${id}.json`, {
         method: 'GET',
         //credentials: 'include',

@@ -10,7 +10,7 @@ import { useEffect } from 'react';
 
 import HomeFeed from '../../pages/HomeFeedPage';
 import NewsItem from '../../pages/NewsItemPage';
-import { getNewsObjects } from '../../services/actions/news';
+import { getNewsIds } from '../../services/actions/news';
 
 
 function App() {
@@ -19,7 +19,7 @@ function App() {
 
   useEffect(()=> {
     dispatch(
-      getNewsObjects()
+      getNewsIds()
     );
   }, []);
 

@@ -1,11 +1,12 @@
-import { GET_NEWS_IDS_LIST_REQUEST, GET_NEWS_IDS_LIST_SUCCESS, GET_NEWS_LIST_REQUEST, GET_NEWS_LIST_SUCCESS } from "../actions/news";
+import { GET_NEWS_IDS_LIST_REQUEST, GET_NEW_BY_ID_SUCCESS, GET_NEWS_IDS_LIST_SUCCESS, GET_NEWS_LIST_REQUEST, GET_NEWS_LIST_SUCCESS, GET_NEW_BY_ID_REQUEST } from "../actions/news";
 
 
 const initialState = {
     isGettingNewsList: false, 
     isGettingNewsIds: false, 
-    isErrorWhileGettingNews: false,
-    items: [],
+    newsIds: [],
+    news: {},
+    newsIdsLoadingRequests: []
 }
 
 export const newsReducer = (state = initialState, action) => {
@@ -16,25 +17,33 @@ export const newsReducer = (state = initialState, action) => {
                 isGettingNewsIds: true
             };
         }
+
         case GET_NEWS_IDS_LIST_SUCCESS: {
             return {
                 ...state,
-                isGettingNewsIds: false
+                isGettingNewsIds: false,
+                newsIds: action.payload
             }
         }
-        case GET_NEWS_LIST_REQUEST: {
-            return {
+        
+        case GET_NEW_BY_ID_REQUEST: {
+            return{
                 ...state,
-                isGettingNewsList: true
-            };
+                newsIdsLoadingRequests: [...state.newsIdsLoadingRequests, action.payload.id]
+            }
         }
-        case GET_NEWS_LIST_SUCCESS: {
-            return {
+
+        case GET_NEW_BY_ID_SUCCESS: {
+            return{
                 ...state,
-                isGettingNewsList: false,
-                items: action.news
-            };
+                news: {
+                    ...state.news,
+                    [action.payload.id]: action.payload.newsItem
+                },
+                newsIdsLoadingRequests: state.newsIdsLoadingRequests.filter(i=> i!==action.payload.id)
+            }
         }
+
         default: {
             return state;
         }
