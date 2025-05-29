@@ -14,7 +14,7 @@ function Header() {
     }
 
     return (
-        <div className="flex flex-col-reverse bg-gray-300 fixed top-0 right-0 justify-between p-8">
+        <div className="flex w-full bg-gray-300 justify-between p-8">
             <NavLink to={ROUTES.home}>
                 <span className="text-lg uppercase font-semibold">НОВОСТНАЯ ЛЕНТА</span>
             </NavLink>

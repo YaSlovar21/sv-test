@@ -9,8 +9,9 @@ import { useEffect } from 'react';
 
 
 import HomeFeed from '../../pages/HomeFeedPage';
-import NewsItem from '../../pages/NewsItemPage';
+import NewsItemPage from '../../pages/NewsItemPage';
 import { getNewsIds } from '../../services/actions/news';
+import Aside from '../Aside/Aside';
 
 
 function App() {
@@ -25,13 +26,16 @@ function App() {
 
 
   return (
-    <>
-      <Header />
-      <Routes>
-        <Route path={ROUTES.home} element={<HomeFeed />} />
-        <Route path={ROUTES.newsItem} element={<NewsItem />} />
-      </Routes>
-    </>
+    <div className="flex w-full content">
+      <Aside />
+      <div className="basis-full">      
+        <Header />
+        <Routes>
+          <Route path={ROUTES.home} element={<HomeFeed />} />
+          <Route path={ROUTES.newsItem} element={<NewsItemPage />} />
+        </Routes>
+      </div>
+    </div>
   )
 }
 

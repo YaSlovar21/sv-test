@@ -20,23 +20,11 @@ function NewCard({by, descendants, id, score, time, title, type, url }) {
 
     return !newsIdsLoadingRequests.includes(id) ? 
         (<Link to={`/${id}`} >
-            <div class="bg-gray-800 text-white p-4 rounded shadow-lg">
-                <div class="flex justify-between items-center">
-                    <div>
-                    <h2 class="text-lg font-bold">{title}</h2>
-                    </div>
-                    <div class="text-gray-400">
-                    <p class="text-sm">Рейтинг:<Rating number={score} /> ({score})</p>
-                    </div>
-                </div>
-                <div class="flex justify-between items-center mt-2">
-                    <div>
-                    <p class="text-sm font-medium">Автор: <span class="text-blue-400">{by}</span></p>
-                    </div>
-                    <div>
-                    <p class="text-sm text-gray-400">Дата публикации: <FormattedDate unixDate={time} /></p>
-                    </div>
-                </div>
+            <div class="bg-gray-800 h-full text-white p-4 rounded shadow-lg">
+                <h2 class="text-base font-medium">{title}</h2>
+                <p class="text-sm text-gray-400">Рейтинг:<Rating number={score} /> ({score})</p>
+                <p class="text-sm font-medium">Автор: <span class="text-blue-400">{by}</span></p>
+                <p class="text-sm text-gray-400">Дата публикации: <FormattedDate unixDate={time} /></p>
             </div>
         </Link>)
         :

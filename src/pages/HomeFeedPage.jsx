@@ -17,7 +17,7 @@ function HomeFeed() {
     } = useSelector(store => store.news)
 
     useEffect(()=> {
-        //const initialCardsIds = newsIds.slice(0,33);
+        const initialCardsIds = newsIds.slice(0,21);
         newsIds.map(id => dispatch(getNewById(id)));
     }, [newsIds])
 
@@ -34,16 +34,19 @@ function HomeFeed() {
     };
 
     return (
-        <div className="content" onScroll={handleScroll}>
-            <h1 className="text-8xl">Лента новостей</h1>
-            { isGettingNewsIds && <p><CircularProgress />Получаем список ID новостей</p> }
-           
-            <div className="flex gap-5 my-10">
-                { newsIds.map(n=> <span>{n}__</span>)}
+        <div className="content flex" onScroll={handleScroll}>
+            <div className="">
+                
             </div>
-
-            <div className="flex flex-col gap-5 my-10">
-                { newsIds.slice(0,33).map(n=> <NewCard {...news[n]} />)}
+            <div className="content">
+                <h1 className="text-8xl">Лента новостей</h1>
+                { isGettingNewsIds && <p><CircularProgress />Получаем список ID новостей</p> }
+                <div className="flex gap-5 my-10">
+                    { newsIds.map(n=> <span>{n}__</span>)}
+                </div>
+                <div className="grid grid-cols-5 items-stretch flex-col gap-5 my-10">
+                    { newsIds.slice(0,21).map(n=> <NewCard {...news[n]} />)}
+                </div>
             </div>
         </div>
         
