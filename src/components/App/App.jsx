@@ -26,14 +26,16 @@ function App() {
 
 
   return (
-    <div className="flex w-full content">
-      <Aside />
-      <div className="basis-full">      
-        <Header />
+    <div className="flex content">
+      <div className='flex w-full'>
+      <Aside className="basis-[310px] shrink-0 border-r border-gray-300" />
+      <div className="basis-full w-full">      
+        <Header className="w-full bg-themegreen-normal laptop:bg-themesky-normal olpc:bg-themepink-100" />
         <Routes>
           <Route path={ROUTES.home} element={<HomeFeed />} />
           <Route path={ROUTES.newsItem} element={<NewsItemPage />} />
         </Routes>
+      </div>
       </div>
     </div>
   )

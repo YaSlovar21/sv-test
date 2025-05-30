@@ -2,3 +2,19 @@
 
 @import "tailwindcss";
 
+@theme {
+    --breakpoint-laptop: 640px;
+    --breakpoint-olpc: 1024px;
+    --breakpoint-pc: 1280px;
+
+    --color-themegreen-light: #DEFEE9;
+    --color-themegreen-normal: #ADFCC8; /* footer, header */
+
+    --color-themesky-ligth: #D4F0FF; 
+    --color-themesky-normal: #95D9FF; /* footer, header */
+
+    --color-themepink-100: #EFE5FF; /* bg */
+    --color-themepink-200: #F1CCFC; /* menu-item*/
+    --color-themepink-300: #D6BDFF; /* aside-mobile */
+    --color-themepink-400: #CFAFD8; /* bg-avatar-in-menu */
+}

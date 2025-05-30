@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { AccountCircle, PhotoCamera } from "@mui/icons-material";
 import { Button } from "@mui/joy";
 
-function Header() {
+function Header({className}) {
     
     const dispatch = useDispatch();
 
@@ -14,7 +14,7 @@ function Header() {
     }
 
     return (
-        <div className="flex w-full bg-gray-300 justify-between p-8">
+        <div className={`flex justify-between p-8 ${className}`}>
             <NavLink to={ROUTES.home}>
                 <span className="text-lg uppercase font-semibold">НОВОСТНАЯ ЛЕНТА</span>
             </NavLink>

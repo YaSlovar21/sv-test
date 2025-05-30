@@ -34,15 +34,11 @@ function HomeFeed() {
     };
 
     return (
-        <div className="content flex" onScroll={handleScroll}>
-            <div className="">
-                
-            </div>
+        <div className="max-w-[calc(100%-80px)] mx-auto" onScroll={handleScroll}>
             <div className="content">
-                <h1 className="text-8xl">Лента новостей</h1>
                 { isGettingNewsIds && <p><CircularProgress />Получаем список ID новостей</p> }
                 <div className="flex gap-5 my-10">
-                    { newsIds.map(n=> <span>{n}__</span>)}
+                    { /*newsIds.map(n=> <span>{n}__</span>)*/}
                 </div>
                 <div className="grid grid-cols-5 items-stretch flex-col gap-5 my-10">
                     { newsIds.slice(0,21).map(n=> <NewCard {...news[n]} />)}

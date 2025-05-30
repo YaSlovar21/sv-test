@@ -19,7 +19,7 @@ function NewsItemPage() {
 
     return (
         <div>
-            <h1 className="text-8xl">Новость ID {id}</h1>
+            <h1 className="text-xl">Новость ID {id}</h1>
             {newsItem ?  <NewCardDetails {...newsItem} /> : <CircularProgress />}
         </div>
     ) 

@@ -1,3 +1,5 @@
+import FormattedDate from "../FormattedDate/FormattedDate";
+import Rating from "../Rating/Rating";
 
 /*
 {
@@ -18,23 +20,21 @@ function NewCardDetails({by, descendants, id, score, time, title, type, url }) {
                 <div class="p-6">
                     <h1 class="text-2xl font-bold leading-7 text-gray-900">{title}</h1>
                     <div class="mt-2 max-w-xl text-gray-500">
-                        Здесь может быть краткое описание новости
+                        <a href={url}>{url}</a>
                     </div>
                     <div class="mt-6 flex items-center">
-                        <div class="flex-shrink-0">
-                             Здесь может быть аватар автора 
-                            <img class="rounded-full h-10 w-10" src="https://via.placeholder.com/100" alt="Аватар автора" />
-                        </div>
+                       
                         <div class="ml-3">
                             <p class="text-sm font-medium text-gray-900">Автор: <span class="text-blue-600">{by}</span></p>
-                            <div class="text-sm text-gray-500">Дата публикации: {time}</div>
+                            <div class="text-sm text-gray-500">Дата публикации: <FormattedDate unixDate={time} /></div>
                         </div>
                         <div class="ml-auto flex-shrink-0">
-                            <span class="text-sm font-medium text-yellow-400">Рейтинг: ★★★★☆ ({score})</span>
+                            <span class="text-sm font-medium text-yellow-400">Рейтинг: <Rating number={score}/> ({score})</span>
                         </div>
                     </div>
                 </div>
             </div>
+            <h2 className="text-xl font-bold">Комментарии </h2>
         </div>
     );
 }
