@@ -13,7 +13,7 @@ import Rating from "../Rating/Rating";
     "url": "https://xwiki.com/en/Blog/open-source-europe-digital-sovereignty/"
 }
 */
-function NewCardDetails({by, descendants, id, score, time, title, type, url }) {
+function NewCardDetails({by, descendants, id, score, kids, time, title, type, url }) {
     return (
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <div class="bg-white rounded-lg shadow overflow-hidden">
@@ -34,7 +34,8 @@ function NewCardDetails({by, descendants, id, score, time, title, type, url }) {
                     </div>
                 </div>
             </div>
-            <h2 className="text-xl font-bold">Комментарии </h2>
+            { kids && <h2 className="text-2xl font-bold">Комментарии</h2> }
+            { kids?.map(i=><b>{i}</b>)}
         </div>
     );
 }

@@ -15,7 +15,7 @@ import { CircularProgress } from "@mui/joy";
     "url": "https://xwiki.com/en/Blog/open-source-europe-digital-sovereignty/"
 }
 */
-function NewCard({by, descendants, id, score, time, title, type, url }) {
+function NewCard({by, descendants, id, score, kids, time, title, type, url }) {
     const { newsIdsLoadingRequests } = useSelector(store => store.news)
 
     return !newsIdsLoadingRequests.includes(id) ? 
@@ -28,9 +28,9 @@ function NewCard({by, descendants, id, score, time, title, type, url }) {
                     <span class="text-xs text-gray-400"><Rating number={score} /> ({score})</span>
                 </div>
                 <h2 class="text-base font-medium line-clamp-2">{title}</h2>
-                <p class="text-sm text-gray-400 mt-auto">Рейтинг:</p>
+                
                 <p class="text-sm font-medium">Автор: <span class="text-blue-400">{by}</span></p>
-               
+                <p class="text-sm text-gray-400">Комментариев: {kids ? kids.length : 0} </p>
             </div>
         </Link>)
         :
