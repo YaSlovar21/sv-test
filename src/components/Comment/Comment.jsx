@@ -1,9 +1,14 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { loadCommentTree } from "../../services/actions/comments";
 
 function Comment({commentId, depth=0}) {
-    const commentObj = useSelector(state.comments.byId[commentId]);
-    const [isOpen, setIsOpen] = useState(depth===0 ? false: true);
+    const dispatch = useDispatch();
+
+    const commentObj = useSelector(store => store.comments.byId[commentId]);
+    const treeLoaded = useSelector(store=> store.comments.treeLoaded[commentId]);
+
+    const [isOpen, setIsOpen] = useState(depth===0 ? false: true); //смущает
 
     //на всякий случай проверим тип, вдруг на комменты можно отвечать "опросами" или чем-то подобным
     if (!comment.type !== 'comment') {
@@ -14,13 +19,19 @@ function Comment({commentId, depth=0}) {
         __html: commentObj.text,
     });
 
+    function handleLoadTree() {
+        if (!treeLoaded) {
+            dispatch(loadCommentTree(commentId));
+        }
+    }
+
     return(
         <div className={`mt-4 relative ${depth > 0 ? 'border-l-2 pl-4' : ''}`}>
 
             {isOpen}
 
             {(depth === 0 && commentObj.kids?.length > 0) && (
-                <button>
+                <button onClick={handleLoadTree}>
                     <span className="absolute inset-0">{isOpen ? 'Открыть' : 'Закрыть'}</span>
                 </button>
             )}
