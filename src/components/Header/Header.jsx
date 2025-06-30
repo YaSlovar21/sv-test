@@ -1,24 +1,24 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, Route, Routes } from "react-router-dom";
 import { ROUTES } from "../../utils/constants";
 
 import { useDispatch, useSelector } from "react-redux";
 import { AccountCircle, PhotoCamera } from "@mui/icons-material";
-import { Button } from "@mui/joy";
+import { Button, CircularProgress } from "@mui/joy";
+import { refreshNews } from "../../services/actions/news";
 
-function Header({className}) {
+function Header({className, onRefresh}) {
     
-    const dispatch = useDispatch();
-
-    function handleRefresh() {
-
-    }
-
+    const isNewsRefreshing = useSelector(store => store.news.isNewsRefreshing);
+    
     return (
         <div className={`flex justify-between p-8 ${className}`}>
             <NavLink to={ROUTES.home}>
                 <span className="text-lg uppercase font-semibold">НОВОСТНАЯ ЛЕНТА</span>
             </NavLink>
-            <Button onClick={handleRefresh} type="button">Обновить</Button>
+            <Routes>
+                <Route path={ROUTES.home} element={<Button onClick={onRefresh} type="button">{isNewsRefreshing ? <CircularProgress size="sm" /> : 'Обновить'}</Button> } />
+            </Routes>
+            
         </div>
     );
 }

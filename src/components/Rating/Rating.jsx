@@ -4,6 +4,10 @@ function Rating({number}) {
         return (
             `${'★'.repeat(number)}${'☆'.repeat(5-number)}`
         );
+    } else {
+        return (
+            `${number}★`
+        )
     }
 }
 

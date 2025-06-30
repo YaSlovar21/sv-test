@@ -21,11 +21,11 @@ function NewCard({by, descendants, id, score, kids, time, title, type, url }) {
     return !newsIdsLoadingRequests.includes(id) ? 
         (<Link to={`/${id}`} >
             <div class="bg-gray-800 h-full flex flex-col text-white p-4 rounded shadow-lg">
-                <div className="flex items-center justify-between">
+                <div className="flex items-start justify-between">
                     <p class="text-xs text-gray-400">
                         <FormattedDate unixDate={time} />
                     </p>
-                    <span class="text-xs text-gray-400"><Rating number={score} /> ({score})</span>
+                    <span class="text-xs text-gray-400"><Rating number={score} /></span>
                 </div>
                 <h2 class="text-base font-medium line-clamp-2">{title}</h2>
                 

@@ -1,4 +1,4 @@
-import { getNewById, getNewsRequest } from "../../utils/hack-api";
+import { getNewById, getNewsIdsRequest } from "../../utils/hack-api";
 
 export const GET_NEWS_IDS_LIST_SUCCESS = 'GET_NEWS_IDS_LIST_SUCCESS';
 export const GET_NEWS_IDS_LIST_ERROR = 'GET_NEWS_IDS_LIST_ERROR';
@@ -12,7 +12,7 @@ export const getNewsObjects = () => (dispatch) => {
     dispatch({
         type: GET_NEWS_IDS_LIST_REQUEST
     });
-    getNewsRequest()
+    getNewsIdsRequest()
         .then((newsIds) => {
              dispatch({
                 type: GET_NEWS_IDS_LIST_SUCCESS

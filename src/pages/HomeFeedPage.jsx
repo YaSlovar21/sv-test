@@ -2,7 +2,7 @@ import { CircularProgress } from "@mui/joy";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import NewCard from "../components/NewCard/NewCard";
-import { getNewById } from "../services/actions/news";
+import { getNewById, getNewsAll, getNewsIds } from "../services/actions/news";
 
 /* Главная страница - ленда */
 
@@ -10,15 +10,19 @@ function HomeFeed() {
     const dispatch = useDispatch();
     //const commands = useSelector(store => store.commands.items);
    
+    
+
     const {
         isGettingNewsIds,
+        isGettingPartOfNews,
         newsIds,
         news
     } = useSelector(store => store.news)
 
     useEffect(()=> {
-        const initialCardsIds = newsIds.slice(0,21);
-        newsIds.map(id => dispatch(getNewById(id)));
+        //const initialCardsIds = newsIds.slice(0,21);
+        //newsIds.map(id => dispatch(getNewById(id)));
+        //getNewsAll();
     }, [newsIds])
 
 
@@ -33,20 +37,21 @@ function HomeFeed() {
        
     };
 
-    return (
-        <div className="max-w-[calc(100%-80px)] mx-auto" onScroll={handleScroll}>
-            <div className="content">
-                { isGettingNewsIds && <p><CircularProgress />Получаем список ID новостей</p> }
-                <div className="flex gap-5 my-10">
-                    { /*newsIds.map(n=> <span>{n}__</span>)*/}
-                </div>
-                <div className="grid grid-cols-5 items-stretch flex-col gap-5 my-10">
-                    { newsIds.slice(0,21).map(n=> <NewCard {...news[n]} />)}
+    if (Object.keys(news).length) {
+        return (
+            <div className="max-w-[calc(100%-80px)] mx-auto" onScroll={handleScroll}>
+                <div className="content">
+                    { isGettingPartOfNews && <p><CircularProgress />Получаем новости</p> }
+                    <div className="flex gap-5 my-10">
+                        { /*newsIds.map(n=> <span>{n}__</span>)*/}
+                    </div>
+                    <div className="grid grid-cols-5 max-olpc:grod-cols-4 max-laptop:grid-cols-3 max-mobile:grid-cols-2 items-stretch flex-col gap-5 my-10">
+                        { newsIds.map(n=> <NewCard {...news[n]} />)}
+                    </div>
                 </div>
             </div>
-        </div>
-        
-    );
+        )
+    } else (<></>);
 }
 
 export default HomeFeed;

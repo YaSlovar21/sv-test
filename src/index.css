@@ -3,9 +3,10 @@
 @import "tailwindcss";
 
 @theme {
-    --breakpoint-laptop: 640px;
-    --breakpoint-olpc: 1024px;
-    --breakpoint-pc: 1280px;
+    --breakpoint-mobile: 366px;
+    --breakpoint-laptop: 641px;
+    --breakpoint-olpc: 1025px;
+    --breakpoint-pc: 1281px;
 
     --color-themegreen-light: #DEFEE9;
     --color-themegreen-normal: #ADFCC8; /* footer, header */

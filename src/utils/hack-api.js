@@ -8,7 +8,8 @@ function checkResponseIsOk(res) {
     }
 }
 
-export const getNewsRequest = () => {
+//забираем только 100 последних новостей
+export const getNewsIdsRequest = () => {
     return fetch(`${BASE_URL}/${API_VERSION}/newstories.json`, {
         method: 'GET',
         //credentials: 'include',
@@ -17,7 +18,7 @@ export const getNewsRequest = () => {
         }
     }).then((res)=> {
         return checkResponseIsOk(res);
-    }); 
+    }).then(res=> res.slice(0,50)); 
 }
 
 export const getNewByIdRequest = (id) => {
@@ -30,4 +31,9 @@ export const getNewByIdRequest = (id) => {
     }).then((res)=> {
         return checkResponseIsOk(res);
     }); 
+}
+ 
+export const getItemsByIdsRequest = async (idsArr) => {
+    const items = await Promise.all(idsArr.map(i=> getNewByIdRequest(i)))
+    return items;
 }
