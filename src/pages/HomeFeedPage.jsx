@@ -6,12 +6,11 @@ import { getNewById, getNewsAll, getNewsIds } from "../services/actions/news";
 
 /* Главная страница - ленда */
 
-function HomeFeed() {
+function HomeFeed({handleRefresh}) {
     const dispatch = useDispatch();
     //const commands = useSelector(store => store.commands.items);
-   
-    
 
+    
     const {
         isGettingNewsIds,
         isGettingPartOfNews,
@@ -20,11 +19,10 @@ function HomeFeed() {
     } = useSelector(store => store.news)
 
     useEffect(()=> {
-        //const initialCardsIds = newsIds.slice(0,21);
-        //newsIds.map(id => dispatch(getNewById(id)));
-        //getNewsAll();
-    }, [newsIds])
-
+        const intervarRefresh = setInterval(handleRefresh, 20 * 1000);
+        return () => clearInterval(intervarRefresh); 
+      },[newsIds])
+  
 
     const handleScroll = () => {
         // Логика для определения, когда пользователь прокрутил до конца страницы
@@ -41,7 +39,7 @@ function HomeFeed() {
         return (
             <div className="max-w-[calc(100%-80px)] mx-auto" onScroll={handleScroll}>
                 <div className="content">
-                    { isGettingPartOfNews && <p><CircularProgress />Получаем новости</p> }
+                 
                     <div className="flex gap-5 my-10">
                         { /*newsIds.map(n=> <span>{n}__</span>)*/}
                     </div>
@@ -51,7 +49,7 @@ function HomeFeed() {
                 </div>
             </div>
         )
-    } else (<></>);
+    } else if (isGettingPartOfNews) return (<p><CircularProgress />Получаем новости</p> );
 }
 
 export default HomeFeed;

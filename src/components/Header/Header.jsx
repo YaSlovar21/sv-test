@@ -2,17 +2,20 @@ import { NavLink, Route, Routes } from "react-router-dom";
 import { ROUTES } from "../../utils/constants";
 
 import { useDispatch, useSelector } from "react-redux";
-import { AccountCircle, PhotoCamera } from "@mui/icons-material";
-import { Button, CircularProgress } from "@mui/joy";
+import {  SegmentOutlined } from "@mui/icons-material";
+import { Button, CircularProgress, IconButton } from "@mui/joy";
 import { refreshNews } from "../../services/actions/news";
 
-function Header({className, onRefresh}) {
+function Header({className, onRefresh, handleAsideOpen}) {
     
     const isNewsRefreshing = useSelector(store => store.news.isNewsRefreshing);
     
     return (
         <div className={`flex justify-between p-8 ${className}`}>
-            <NavLink to={ROUTES.home}>
+            <button onClick={handleAsideOpen} className="hidden max-laptop:block self-start">
+                <SegmentOutlined />
+            </button>
+            <NavLink className="mr-auto" to={ROUTES.home}>
                 <span className="text-lg uppercase font-semibold">НОВОСТНАЯ ЛЕНТА</span>
             </NavLink>
             <Routes>
