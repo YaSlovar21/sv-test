@@ -20,21 +20,21 @@ function NewCard({by, descendants, id, score, kids, time, title, type, url }) {
 
     return !newsIdsLoadingRequests.includes(id) ? 
         (<Link to={`/${id}`} >
-            <div class="bg-gray-800 h-full flex flex-col text-white p-4 rounded shadow-lg">
+            <div className="bg-gray-800 h-full flex flex-col text-white p-4 rounded shadow-lg">
                 <div className="flex items-start justify-between">
-                    <p class="text-xs text-gray-400">
+                    <p className="text-xs text-gray-400">
                         <FormattedDate unixDate={time} />
                     </p>
-                    <span class="text-xs text-gray-400"><Rating number={score} /></span>
+                    <span className="text-xs text-gray-400"><Rating number={score} /></span>
                 </div>
-                <h2 class="text-base font-medium line-clamp-2">{title}</h2>
+                <h2 className="text-base font-medium line-clamp-2">{title}</h2>
                 
-                <p class="text-sm font-medium">Автор: <span class="text-blue-400">{by}</span></p>
-                <p class="text-sm text-gray-400">Комментариев: {kids ? kids.length : 0} </p>
+                <p className="text-sm font-medium mt-auto">Автор: <span className="text-blue-400">{by}</span></p>
+                <p className="text-sm text-gray-400">Комментариев: {kids ? kids.length : 0} </p>
             </div>
         </Link>)
         :
-        ( <div class="bg-gray-800 text-white p-4 rounded h-20 shadow-lg">Загружается <CircularProgress /></div>)
+        ( <div className="bg-gray-800 text-white p-4 rounded h-20 shadow-lg">Загружается <CircularProgress /></div>)
     
 }
 

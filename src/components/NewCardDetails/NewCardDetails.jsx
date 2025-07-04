@@ -16,19 +16,19 @@ import Rating from "../Rating/Rating";
 function NewCardDetails({by, descendants, id, score, kids, time, title, type, url }) {
     return (
 
-            <div class="bg-white rounded-lg shadow overflow-hidden max-w-7xl mx-auto px-4 py-12">
-                <h1 class="text-2xl font-bold leading-7 text-gray-900">{title}</h1>
-                <div class="mt-2 max-w-xl text-gray-500">
+            <div className="bg-white rounded-lg shadow overflow-hidden max-w-7xl mx-auto px-4 py-12">
+                <h1 className="text-2xl font-bold leading-7 text-gray-900">{title}</h1>
+                <div className="mt-2 max-w-xl text-gray-500">
                     <a href={url}>{url}</a>
                 </div>
-                <div class="mt-6 flex items-center">
+                <div className="mt-6 flex items-center">
                     
-                    <div class="ml-3">
-                        <p class="text-sm font-medium text-gray-900">Автор: <span class="text-blue-600">{by}</span></p>
-                        <div class="text-sm text-gray-500">Дата публикации: <FormattedDate unixDate={time} /></div>
+                    <div className="ml-3">
+                        <p className="text-sm font-medium text-gray-900">Автор: <span className="text-blue-600">{by}</span></p>
+                        <div className="text-sm text-gray-500">Дата публикации: <FormattedDate unixDate={time} /></div>
                     </div>
-                    <div class="ml-auto flex-shrink-0">
-                        <span class="text-sm font-medium text-yellow-400">Рейтинг: <Rating number={score}/> ({score})</span>
+                    <div className="ml-auto flex-shrink-0">
+                        <span className="text-sm font-medium text-yellow-400">Рейтинг: <Rating number={score}/> ({score})</span>
                     </div>
                 </div>
             </div>

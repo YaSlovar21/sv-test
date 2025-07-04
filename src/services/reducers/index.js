@@ -5,7 +5,4 @@ import { commentsReducer } from "./comments";
 export const rootReducer = combineReducers({
     news: newsReducer,
     comments: commentsReducer,
-    //commands: commandsReducer,
-    //currentHackathon: hackathonReducer
-    //modalOrder: modalOrderReducer
 });

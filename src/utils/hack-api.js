@@ -18,7 +18,7 @@ export const getNewsIdsRequest = () => {
         }
     }).then((res)=> {
         return checkResponseIsOk(res);
-    }).then(res=> res.slice(0,50)); 
+    }).then(res=> res.slice(0,100)); 
 }
 
 export const getNewByIdRequest = (id) => {

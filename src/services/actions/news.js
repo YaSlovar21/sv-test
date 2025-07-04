@@ -80,13 +80,10 @@ export const refreshNews = (oldListIds) => async (dispatch) => {
 
 export const getNewsAll = () => async (dispatch, getState) => {
     const { newsIds } = getState().news;
-    console.log(getState());
-
     //если ids в стейте есть
     if (newsIds.length > 0 ) {
         //на будущее
     }
-    
     //если ids в стейте нет
     try {
         dispatch({type: GET_NEWS_IDS_LIST_REQUEST});

@@ -11,12 +11,13 @@ function Aside({className, onClose}) {
     }
 
     return  (
-         
-        <div className={`${className} h-[98vh] sticky top-0 no-scrollbar overflow-y-auto  flex flex-col p-9 bg-themepink-300 olpc:bg-themepink-100`}>
-            <IconButton onClick={handleClose} className="hidden max-laptop:block self-start">
+        <div className={`${className}`}>
+            <button onClick={handleClose} className="hidden max-laptop:block self-start cursor-pointer p-1 mb-2 ml-2 rounded-full transition-all hover:bg-gray-50">
                 <CloseOutlined />
-            </IconButton>
-            {ids.length ? ids.map(n=> <MenuItem id={n} />) : <CircularProgress />}
+            </button>
+            <div className="max-h-screen sticky top-0 no-scrollbar overflow-y-auto">
+                {ids.length ? ids.map(n=> <MenuItem key={n} id={n} />) : <CircularProgress />}
+            </div>
         </div>
     );
 }
