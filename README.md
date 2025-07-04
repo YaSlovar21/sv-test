@@ -5,3 +5,5 @@
 3. npm run start
 
 Проект запустится на 9000 порту
+
+Рабочая версия приложения доступна по ссылке https://sv-test-react-tw.website.yandexcloud.net/
